@@ -47,9 +47,7 @@ function mtw_title( $atts ) {
 add_shortcode( 'mtw_title','mtw_title' );
 
 function mtw_permalink( $atts ) {
-	$atts = shortcode_atts( array(
-		'default' => 'values'
-	), $atts );
+
 	global $post;
 
 	return get_permalink();
@@ -193,6 +191,22 @@ function mtw_taxonomy( $atts ) {
 	return implode(', ', $names);
 }
 add_shortcode( 'mtw_tax','mtw_taxonomy' );
+
+function mtw_get_term_link( $atts )
+{
+	$atts = shortcode_atts( array(
+		'term' => '',
+		'taxonomy' => 'category'
+	), $atts );
+	$url = get_term_link( $atts['term'], $atts['taxonomy'] );
+
+	if( is_string( $url ) )
+	{
+		return $url;
+	}
+
+}
+add_shortcode( 'mtw_get_term_link' , 'mtw_get_term_link' );
 
 
 

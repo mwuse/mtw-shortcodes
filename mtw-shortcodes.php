@@ -163,12 +163,12 @@ function mtw_categories( $atts ) {
 
 	foreach ($terms as $key => $term) 
 	{
-		$names[] = $term->name;
+		$names[] = '<a href="'. get_term_link( $term ) . '">' . $term->name . "</a>";
 	}
 
 	return implode(', ', $names);
 }
-add_shortcode( 'mtw_cat','mtw_categories' );
+add_shortcode( 'mtw_categories','mtw_categories' );
 
 
 
